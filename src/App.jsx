@@ -13,6 +13,7 @@ import MemoryGame from "@/pages/games/MemoryGame";
 import AttentionGame from "@/pages/games/AttentionGame";
 import PlanningGame from "@/pages/games/PlanningGame";
 import SimonGame from "@/pages/games/SimonGame";
+
 import DailyChallenge from "@/pages/DailyChallenge";
 import PremiumPage from "@/pages/PremiumPage";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -100,6 +101,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              
               <Route
                 path="/reto-del-dia"
                 element={

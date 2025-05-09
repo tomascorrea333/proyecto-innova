@@ -24,9 +24,6 @@ const PremiumPage = () => {
       title: "¡Gracias por tu interés!",
       description: "La funcionalidad de pago con Stripe se integrará pronto. Por ahora, esta es una demostración.",
     });
-    // Aquí iría la lógica para Stripe.
-    // Por ahora, solo mostramos un mensaje.
-    // Si quieres que te guíe para integrar Stripe, dímelo.
   };
 
   return (
@@ -48,14 +45,14 @@ const PremiumPage = () => {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <div className="grid md:grid-cols-1 gap-8 items-center mb-12">
         <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="space-y-4"
         >
-          <h2 className="text-3xl font-bold mb-4">Beneficios Exclusivos de Premium:</h2>
+          <h2 className="text-3xl font-bold mb-4 text-center md:text-left">Beneficios Exclusivos de Premium:</h2>
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -68,16 +65,6 @@ const PremiumPage = () => {
               <span className="text-lg">{benefit.text}</span>
             </motion.div>
           ))}
-        </motion.div>
-        <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          <img  
-            className="rounded-xl shadow-2xl object-cover w-full h-auto max-h-[400px]" 
-            alt="Persona mayor sonriendo usando una tablet"
-           src="https://images.unsplash.com/photo-1671072012624-c2089f89753f" />
         </motion.div>
       </div>
 

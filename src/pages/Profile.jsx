@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { Trophy, Brain, Star, Award, Target, Zap, CalendarDays } from "lucide-react";
+import { Trophy, Brain, Star, Award, Target, Zap, CalendarDays, UserCheck2, Edit3 } from "lucide-react";
 import { format, getDate, getMonth, getYear, startOfMonth, getDaysInMonth, getDay } from "date-fns";
 import { es } from "date-fns/locale";
 import {
@@ -14,6 +14,7 @@ import {
   Radar,
   ResponsiveContainer
 } from "recharts";
+import { affinityQuestions } from "@/lib/affinityData"; 
 
 function Profile() {
   const { user } = useAuth();
@@ -29,6 +30,7 @@ function Profile() {
 
   const activityHistory = user?.activityHistory || [];
   const achievements = user?.achievements || [];
+  const userAffinityProfile = user?.affinityProfile || {};
 
   const today = new Date();
   const currentMonth = getMonth(today);
@@ -36,9 +38,8 @@ function Profile() {
   const firstDayOfMonth = startOfMonth(today);
   const daysInMonth = getDaysInMonth(today);
   
-  // Sunday is 0, Monday is 1, etc. Adjust to make Monday the first day of the week in display.
   let startingDayOfWeek = getDay(firstDayOfMonth); 
-  startingDayOfWeek = startingDayOfWeek === 0 ? 6 : startingDayOfWeek -1; // Monday as 0
+  startingDayOfWeek = startingDayOfWeek === 0 ? 6 : startingDayOfWeek -1; 
 
   const calendarDays = [];
   for (let i = 0; i < startingDayOfWeek; i++) {
@@ -59,7 +60,7 @@ function Profile() {
   }
 
   const getIconComponent = (iconName) => {
-    const icons = { Trophy, Brain, Star, Award, Target, Zap, CalendarDays };
+    const icons = { Trophy, Brain, Star, Award, Target, Zap, CalendarDays, UserCheck2 };
     return icons[iconName] || Brain;
   };
 
@@ -78,18 +79,19 @@ function Profile() {
         animate={{ opacity: 1, y: 0 }}
         className="space-y-8"
       >
-        <div className="flex flex-col items-center space-y-4">
-          <div className="h-24 w-24 rounded-full bg-primary/10 p-6">
+        <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
+          <div className="h-24 w-24 rounded-full bg-primary/10 p-6 shrink-0">
             <Brain className="h-full w-full text-primary" />
           </div>
-          <div className="text-center">
+          <div className="text-center md:text-left">
             <h1 className="text-3xl font-bold">{user.name}</h1>
             <p className="text-xl text-muted-foreground">Nivel {user.level}</p>
+            {user.age && <p className="text-md text-muted-foreground">{user.age} años</p>}
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="card">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="card lg:col-span-1">
             <h2 className="mb-4 text-2xl font-semibold">Perfil Cognitivo</h2>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
@@ -109,7 +111,7 @@ function Profile() {
             </div>
           </div>
 
-          <div className="card">
+          <div className="card lg:col-span-1">
             <h2 className="mb-4 text-2xl font-semibold">Estadísticas</h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -128,6 +130,28 @@ function Profile() {
               </div>
             </div>
           </div>
+          
+          {Object.keys(userAffinityProfile).length > 0 && (
+            <div className="card lg:col-span-1">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-semibold">Mis Intereses</h2>
+                <UserCheck2 className="h-6 w-6 text-primary" />
+              </div>
+              <div className="space-y-3">
+                {affinityQuestions.map(q => {
+                  if (userAffinityProfile[q.id]) {
+                    return (
+                      <div key={q.id}>
+                        <p className="text-sm font-medium text-muted-foreground">{q.label}</p>
+                        <p className="font-semibold">{userAffinityProfile[q.id]}</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="card">
@@ -160,7 +184,7 @@ function Profile() {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Logros</h2>
           {achievements.length > 0 ? (
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {achievements.map((achievement, index) => {
                 const Icon = getIconComponent(achievement.icon);
                 const achievementDate = achievement.date ? new Date(achievement.date) : null;
@@ -170,7 +194,7 @@ function Profile() {
                   
                 return (
                   <motion.div
-                    key={index}
+                    key={achievement.id || index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
@@ -199,7 +223,7 @@ function Profile() {
 
         <div className="flex justify-center">
           <Button variant="outline" size="lg">
-            Editar Perfil
+            <Edit3 className="mr-2 h-5 w-5" /> Editar Perfil
           </Button>
         </div>
       </motion.div>
