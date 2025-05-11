@@ -24,8 +24,8 @@ export const clearUserFromStorage = () => {
 export const getInitialUserForLogin = (email) => ({
   id: "1",
   email,
-  name: "Lionel Messi", 
-  avatarInitial: "LM",
+  name: "Valentina Hortal", 
+  avatarInitial: "VH",
   age: 78,
   points: 1250,
   level: 12,

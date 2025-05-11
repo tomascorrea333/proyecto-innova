@@ -8,6 +8,12 @@ module.exports = {
 		'./src/**/*.{js,jsx}',
 	],
 	theme: {
+		extend: {
+			colors: {
+				background: '#fffbf5',
+				primary: '#b7b1f4',
+			},
+		},
 		container: {
 			center: true,
 			padding: '2rem',

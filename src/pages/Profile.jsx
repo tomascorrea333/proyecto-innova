@@ -125,7 +125,7 @@ function Profile() {
               <div className="flex items-center justify-between">
                 <span>Ranking</span>
                 <span className="font-semibold">
-                  {user.ranking} de {user.totalUsers}
+                  {user.ranking} de 200
                 </span>
               </div>
             </div>
