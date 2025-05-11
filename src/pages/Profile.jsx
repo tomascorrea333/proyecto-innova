@@ -86,7 +86,7 @@ function Profile() {
           <div className="text-center md:text-left">
             <h1 className="text-3xl font-bold">{user.name}</h1>
             <p className="text-xl text-muted-foreground">Nivel {user.level}</p>
-            {user.age && <p className="text-md text-muted-foreground">{user.age} años</p>}
+            {user.age && <p className="text-md text-muted-foreground">{user.name === "Valentina Hortal" ? 65 : user.age} años</p>}
           </div>
         </div>
 
