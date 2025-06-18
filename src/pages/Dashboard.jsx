@@ -199,7 +199,7 @@ function Dashboard() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex-1">
               <h2 className="text-3xl font-bold mb-2 flex items-center">
-                <Star className="h-8 w-8 mr-3 text-yellow-300" /> CogniSenior Premium
+                <Star className="h-8 w-8 mr-3 text-yellow-300" /> EternaMente Premium
               </h2>
               <p className="text-lg opacity-90 mb-4">
                 Desbloquea juegos exclusivos, análisis detallados y más funciones para potenciar tu mente.

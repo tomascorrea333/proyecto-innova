@@ -38,7 +38,7 @@ const PremiumPage = () => {
           <Star className="h-12 w-12 text-white" fill="white" />
         </div>
         <h1 className="text-5xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-pink-500">
-          Desbloquea tu Potencial con CogniSenior Premium
+          Desbloquea tu Potencial con EternaMente Premium
         </h1>
         <p className="text-xl text-muted-foreground mb-10">
           Lleva tu entrenamiento cognitivo al siguiente nivel con herramientas avanzadas, contenido exclusivo y una experiencia personalizada.

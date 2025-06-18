@@ -273,7 +273,7 @@ function Social() {
         animate={{ opacity: 1, y: 0 }}
         className="space-y-8 max-w-4xl mx-auto"
       >
-        <h1 className="text-4xl font-bold text-center">Comunidad CogniSenior</h1>
+        <h1 className="text-4xl font-bold text-center">Comunidad EternaMente</h1>
 
         {currentWeeklyTopic && (
           <motion.div 

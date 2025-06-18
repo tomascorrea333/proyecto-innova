@@ -13,7 +13,7 @@ function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <Brain className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold">CogniSenior</span>
+          <span className="text-2xl font-bold">EternaMente</span>
         </Link>
 
         <div className="flex items-center space-x-4">
